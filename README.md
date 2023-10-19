@@ -1,6 +1,6 @@
-# Source code for lukasbommes.github.io
+# Source code for www.lukasbommes.de
 
-This repository contains the source code for my home page at [lukasbommes.github.io](https://lukasbommes.github.io)
+This repository contains the source code for my home page at [www.lukasbommes.de](https://www.lukasbommes.de)
 
 ### Update the website
 
