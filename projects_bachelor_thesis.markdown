@@ -16,3 +16,7 @@ permalink: /projects/bachelor_thesis/
 
 ![workpiece_clamp_gui](/assets/projects/images/workpiece_clamp_gui.png)
 *Fig. 2: MATLAB-based graphical user interface for controlling the thermal workpiece clamp.*
+
+## Downloads
+
+- [Bachelor thesis (PDF)](/assets/documents/bachelor_thesis.pdf)

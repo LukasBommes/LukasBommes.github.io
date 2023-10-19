@@ -4,7 +4,7 @@ title: Predictive Maintenance of CNC Machines (Study Thesis)
 permalink: /projects/study_thesis/
 ---
 
-*Conducted during*: Study thesis at IWF TU Braunschweig and A*Star SIMTech Singapore / Student research assistant at IWF TU Braunschweig 
+*Conducted during*: Study thesis at IWF TU Braunschweig and A\*Star SIMTech Singapore / Student research assistant at IWF TU Braunschweig 
 
 *Topic*: Application of machine learning algorithms for the detection of anomalous components in a CNC milling machine
 
@@ -24,3 +24,7 @@ permalink: /projects/study_thesis/
 *Fig. 3: Clustered segments of the healthy reference machine (training) and the same machine with anomalies (testing) in classes 6 and 7, corresponding to the forward/backward movement of the z-axis.*
 
 **Note**: We tested this method on a CNC mill at IWF TU Braunschweig and a much larger CNC lathe at Siemens Energy in Duisburg.
+
+## Downloads
+
+- [Study thesis (PDF)](/assets/documents/study_thesis.pdf)

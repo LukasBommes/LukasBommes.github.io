@@ -56,7 +56,7 @@ I published the developed PV plant inspection solution in the form of two softwa
 
 ### PV Hawk
 
-*GitHub*: https://github.com/LukasBommes/PV-Hawk
+*GitHub*: [https://github.com/LukasBommes/PV-Hawk](https://github.com/LukasBommes/PV-Hawk)
 
 *Description*: PV Hawk implements the computer vision pipeline described above. It contains all functionality for extraction and mapping of PV modules from aerial IR videos. Target audiences are researchers and companies that want to offer inspection of large-scale PV plants.
 
@@ -64,7 +64,7 @@ I published the developed PV plant inspection solution in the form of two softwa
 
 ### PV Hawk Viewer
 
-*GitHub*: https://github.com/LukasBommes/PV-Hawk-Viewer
+*GitHub*: [https://github.com/LukasBommes/PV-Hawk-Viewer](https://github.com/LukasBommes/PV-Hawk-Viewer)
 
 *Description*: A desktop app (see fig. 8) for viewing reconstructions of large-scale photovoltaic (PV) plants created with PV Hawk. The user can browse individual PV modules on a map. Corresponding infrared video frames and extracted module patches will be shown. The software provides functionality for annotating module anomalies and electrical connectivity of modules. Different kinds of analyses can be performed based on the map and infrared frames. Results can be overlaid on the map. For example, trend-corrected maximum or mean module temperatures can be computed facilitating the identification of many types of module anomalies (see [publication [3]](/publications#publication-3) for details). Furthermore, a deep learning-based anomaly prediction can be performed (see [publication [2]](/publications#publication-2) for details).
 
@@ -77,7 +77,7 @@ I published the developed PV plant inspection solution in the form of two softwa
 
 ### Grid Annotation Tool
 
-*GitHub*: https://github.com/LukasBommes/ Grid-Annotation-Tool
+*GitHub*: [https://github.com/LukasBommes/ Grid-Annotation-Tool](https://github.com/LukasBommes/ Grid-Annotation-Tool)
 
 *Description*: A web app for annotating image datasets for instance segmentation (see fig. 9). Opposed to existing labelling tools, such as Labelbox or CVAT, grid-like structures can be annotated faster and more accurately by annotating the grid spines instead of individual polygons. I built this tool specifically for annotating PV modules in infrared images. The created dataset was used to train and evaluate the Mask R-CNN instance segmentation model in PV Hawk (see [publication [1]](/publications#publication-1) for details).
 
@@ -89,3 +89,7 @@ I published the developed PV plant inspection solution in the form of two softwa
 ## Related Publications
 
 The following three journal articles were published during this project: [[1](/publications#publication-1), [2](/publications#publication-2), [3](/publications#publication-3)].
+
+## Downloads
+
+- [PhD thesis (PDF)](/assets/documents/phd_thesis.pdf)

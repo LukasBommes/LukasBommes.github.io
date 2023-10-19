@@ -4,7 +4,7 @@ title: Multi-camera Tracking System for Shopfloor Monitoring (Master’s Thesis)
 permalink: /projects/master_thesis/
 ---
 
-*Conducted during*: Master thesis at IWF TU Braunschweig and A*Star SIMTech Singapore / Software Engineer at A*Star SIMTech
+*Conducted during*: Master thesis at IWF TU Braunschweig and A\*Star SIMTech Singapore / Software Engineer at A\*Star SIMTech
 
 *Topic*: Development of a multi-camera-based detection and tracking system for shopfloor monitoring
 
@@ -23,19 +23,19 @@ permalink: /projects/master_thesis/
 
 ### Shopfloor Monitor (unpublished)
 
-*Description*: The Shopfloor Monitor is a proprietary software in active development at A*Star SIMTech.
+*Description*: The Shopfloor Monitor is a proprietary software in active development at A\*Star SIMTech.
 
 *Technologies*: The Shopfloor Monitor comprises of a command line tool written in Python, which contains the application logic, and a web app based on Python Flask for visualization of tracked people in real-time on a virtual 2D floorplan. The floorplan is based on SVG, D3.js, and three.js. Apache ECharts are used for real-time display of statistics. Communication between backend and frontend is realized with sockets. The web app is served with NGINX and a MongoDB is used for data storage. Deep learning components are implemented in Tensorflow 1. Docker and Docker Compose are used for the deployment of the system, which is implemented in a microservice pattern. Several extension modules have been developed: The [RTSP Video Stream Synchronizer](#rtsp-video-stream-synchronizer) for synchronization of the network camera streams, and the [MVmed tracker](#mvmed-tracker) for fast multi-object tracking based on motion vector fields contained in the encoded video streams. These motion vector fields are extracted with the [Motion Vector Extractor](#motion-vector-extractor).
 
 ### RTSP Video Stream Synchronizer
 
-*GitHub*: https://github.com/LukasBommes/rtsp-streamsync
+*GitHub*: [https://github.com/LukasBommes/rtsp-streamsync](https://github.com/LukasBommes/rtsp-streamsync)
 
 *Description*: The Shopfloor Monitor relies on the video input of multiple network video cameras, which, by default, are not synchronized and exhibit stream offsets of tens of seconds. To solve this issue, I developed the RTSP Video Stream Synchronizer, which is a C++/Python library for the synchronization of video frames from multiple network network cameras. In tests, the algorithm synchronized seven parallel video streams with an initial offset of 28.7 seconds to an accuracy of 50.5 milliseconds in real-time.
 
 ### Motion Vector Extractor
 
-*GitHub*: https://github.com/LukasBommes/mv-extractor
+*GitHub*: [https://github.com/LukasBommes/mv-extractor](https://github.com/LukasBommes/mv-extractor)
 
 *Description*: A tool for the extraction of motion vector fields (see fig. 2) from H.264 and MPEG-4 Part 2 encoded video streams (see [publication [4]](/publications#publication-4) for details). Extracted motion vectors can be used for downstream tasks, such as object detection, object tracking, structure from motion, or video stabilization. Since motion vectors are readily available in the video stream, no additional computation is needed to estimate scene motion. This is a great advantage over techniques operating on the decoded frames, such as optical flow.
 
@@ -46,7 +46,7 @@ permalink: /projects/master_thesis/
 
 ### MVmed Tracker
 
-*GitHub*: https://github.com/LukasBommes/mvmed-tracker
+*GitHub*: [https://github.com/LukasBommes/mvmed-tracker](https://github.com/LukasBommes/mvmed-tracker)
 
 *Description*: MVmed tracker is a real-time online multi-object tracker for videos, which exploits motion vector fields readily available in MPEG-4 or H.264 encoded video streams to achieve very high tracking speeds (see [publication [4]](/publications#publication-4) for details). The tracker uses a Faster R-CNN to detect object bounding boxes in regular intervals, which are propagated by averaging of the motion vector field inside the box (see fig. 3). On the MOT17 benchmark MVmed achieves a MOTA of 45.3 % at 42.1 Hz (266.9 Hz without detection), which is as accurate but much faster than the previous state of the art tracker for encoded videos.
 
@@ -60,4 +60,8 @@ permalink: /projects/master_thesis/
 ## Related Publications
 
 The following conference paper was published during this project: [[4]](/publications#publication-4)
+
+## Downloads
+
+- [Master thesis (PDF)](/assets/documents/master_thesis.pdf)
 
