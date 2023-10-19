@@ -7,7 +7,7 @@ layout: home
 
 <img src="/assets/profile.jpg" width="280" style="float: right; margin-left: 30px;">
 
-I am currently working as a software engineer at [SIEAERO](https://www.siemens-energy.com/global/en/home/products-services/service/sieaero.html). Since we are a startup I am working on many different aspects of the project, including infrastructure (providing a Kubernetes cluster and maintaining deployments), DevOps (automate builds, tests, and deployment), and implementation of application code with focus on efficient processing and handling of our multi-petabyte datasets.
+I work as a software engineer at [SIEAERO](https://www.siemens-energy.com/global/en/home/products-services/service/sieaero.html). Since we are a startup, I am working on many different aspects of the project, including infrastructure (providing a Kubernetes cluster and maintaining deployments), DevOps (automate builds, tests, and deployment), and implementation of application code with focus on efficient processing and handling of our multi-petabyte datasets.
 
 Previously, I did a PhD in automated aerial inspection of utility-scale photovoltaic plants.
 
