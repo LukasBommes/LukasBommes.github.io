@@ -1,4 +1,4 @@
-# Source code for www.lukasbommes.de
+# Source code for lukasbommes.github.io
 
 This repository contains the source code for my home page at [lukasbommes.github.io](https://lukasbommes.github.io/)
 
