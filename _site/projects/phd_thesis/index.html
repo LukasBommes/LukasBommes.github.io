@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Computer Vision Pipeline for Automatic Inspection of PV Plants (PhD Thesis) | Lukas Bommes</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Computer Vision Pipeline for Automatic Inspection of PV Plants (PhD Thesis)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Source for my homepage" />
+<meta property="og:description" content="Source for my homepage" />
+<link rel="canonical" href="https://lukasbommes.github.io/projects/phd_thesis/" />
+<meta property="og:url" content="https://lukasbommes.github.io/projects/phd_thesis/" />
+<meta property="og:site_name" content="Lukas Bommes" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Computer Vision Pipeline for Automatic Inspection of PV Plants (PhD Thesis)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Source for my homepage","headline":"Computer Vision Pipeline for Automatic Inspection of PV Plants (PhD Thesis)","url":"https://lukasbommes.github.io/projects/phd_thesis/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://lukasbommes.github.io/feed.xml" title="Lukas Bommes" /></head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lukas Bommes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/publications/">Publications</a><a class="page-link" href="/documents/">Documents</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Computer Vision Pipeline for Automatic Inspection of PV Plants (PhD Thesis)</h1>
+  </header>
+
+  <div class="post-content">
+    <p><em>Conducted during</em>: PhD at Helmholtz Institute Erlangen‑Nürnberg for Renewable Energy</p>
+
+<p><em>Topic</em>: Automated processing of aerial infrared videos for the inspection of large-scale photovoltaic plants</p>
+
+<p><strong>Motivation</strong>: Globally deployed solar photovoltaic installations have reached a capacity of 627 GWp in 2020<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> with a projected growth to 2840 GWp in 2030<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>. Typically, PV plants contain about 10 % anomalous PV modules, which can pose safety hazards, power losses and yield losses. Thus, regular inspection of PV plants is required. As PV plants contain tens of thousands to millions of PV modules, manual inspection is economically infeasible, raising the demand for a fully automated inspection solution.</p>
+
+<p><strong>Aim</strong>: Develop a flexible, fully automated solution for PV plant inspection that allows for a high throughput and interferes minimally with plant operation.</p>
+
+<p><strong>Problem Statement</strong>: Thermal infrared (IR) imaging is used for contactless identification of anomalous PV modules based on heat dissipated in potentially defective regions of the module. The IR camera is carried by a multicopter, which facilitates low cost and high throughput inspections. A software solution is required to automatically process the large amounts of acquired IR videos. Specifically, the software needs to accurately identify anomalous modules among normal ones and it must localize those modules within the plant to facilitate targeted repairs. Furthermore, it should quantify the impact of module anomalies on the power output of the plant.</p>
+
+<p><strong>Method &amp; Results</strong>: The developed inspection software comprises of a) a computer vision pipeline for extraction and mapping of individual PV modules, and b) components for performing defect detection of individual PV modules.</p>
+
+<p>a) Computer vision pipeline for extraction and mapping of PV modules:</p>
+
+<p>Input to the pipeline (see fig. 1) are infrared videos and a coarse GPS trajectory (latitude, longitude, and optionally altitude) of the multicopter. Outputs are multiple cropped and rectified image patches of each PV module grouped by a unique ID and geocoordinates of the corner points of each module. The pipeline first segments individual PV modules in each infrared video frame with a Mask R-CNN instance segmentation model. Each module is then tracked over subsequent frames, cropped, rectified, and stored to disk with a unique tracking ID. In <a href="/publications#publication-1">publication [1]</a> the module location is determined relative to other modules within a plant row by means of an external plant description file and a graph matching algorithm. In <a href="/publications#publication-3">publication [3]</a> a more flexible, layout-independent, and fully automated solution for module localization is proposed. Here, structure from motion is used to reconstruct the 6-DOF camera trajectory as well as 3D feature points (see fig. 2). Since the coarse GPS trajectory is given the reconstruction is provided in WGS84 geocoordinates. Based on the known camera coordinates, PV module corners are triangulated into the 3D reconstruction and refined with an iterative graph optimization, yielding absolute geocoordinates for each PV module (see fig. 3).</p>
+
+<p><img src="/assets/projects/images/overview_pv_drone_inspect-1.png" alt="overview_pv_drone_inspect" />
+<em>Fig. 1: Computer vision pipeline for extraction and mapping of PV modules from aerial IR videos.</em></p>
+
+<p><img src="/assets/projects/images/reconstruction.png" alt="reconstruction" />
+<em>Fig. 2: Reconstruction of a PV plant showing the camera trajectory (blue line and black frustums), feature points (gray) and triangulated PV modules (red).</em></p>
+
+<p><img src="/assets/projects/images/module_layout_plant_A-1.png" alt="module_layout_plant_A" />
+<em>Fig. 3: Map of a PV plant containing 13640 modules obtained with the computer vision pipeline.</em></p>
+
+<p>b) Detection of anomalous PV modules:</p>
+
+<p>Anomalous modules are identified based on the extracted and rectified image patches of each module. In <a href="/publications#publication-1">publication [1]</a>, we annotate 4.3 million IR images of over 10700 modules from seven PV plants with ten different anomaly classes (see fig. 4) and train an image classifier based on a ResNet-50 convolutional neural network (CNN), which achieved over 90 percent test accuracy. In <a href="/publications#publication-2">publication [2]</a> I find that this earlier approach is not useful for practical applications, where training and test data are drawn from different distributions (different PV plants), which exhibit significant domain shift (see fig. 5). I develop a binary anomaly detection method based on contrastive representation learning (see fig. 6) and a k-nearest neighbor classifier, which is trained on data of one PV plant and evaluated on data of a different plant. This approach overcomes the domain shift due to the higher informativeness of the contrastive representation as opposed to representations learned with a cross-entropy loss. In <a href="/publications#publication-3">publication [3]</a> I investigate a simpler and more practical anomaly detection method based on module temperatures (see fig. 7), which requires no training, is easier to interpret and achieves a similar accuracy as the deep learning methods.</p>
+
+<p><img src="/assets/projects/images/anomaly_classes.png" alt="anomaly_classes" />
+<em>Fig. 4: IR images of PV modules with different types of anomalies.</em></p>
+
+<p><img src="/assets/projects/images/embeddings.png" alt="embeddings" />
+<em>Fig. 5: Embeddings of IR images in our dataset. Images form subdomains for different PV plants (left), but do not exhibit significant clustering of normal (green) versus anomalous (red) PV modules (right).</em></p>
+
+<p><img src="/assets/projects/images/overview_anomaly_detection-1.png" alt="overview_anomaly_detection" />
+<em>Fig. 6: Method for binary PV module anomaly detection based on contrastive representation learning and a k-nearest neighbor classifier.</em></p>
+
+<p><img src="/assets/projects/images/module_temperatures.png" alt="module_temperatures" />
+<em>Fig. 7: Trend-corrected distribution of maximum module temperatures facilitates detection of anomalous PV modules.</em></p>
+
+<p><strong>Practical Relevance</strong>: The developed solution for PV plant inspection has been tested on several PV plants in Germany and Brazil with capacities ranging from a few kilowatts to several hundred megawatts. We currently collaborate with a company and an energy provider to deploy the software in combination with an autonomously controlled multicopter on a PV plant for recurring inspections. Thus far, the project has received interest from a large organization and research teams in Spain, Brazil, Saudi Arabia, and Singapore.</p>
+
+<h2 id="software">Software</h2>
+
+<p>I published the developed PV plant inspection solution in the form of two software repositories under the permissive MIT license. In addition, I published a web app for annotating datasets for instance segmentation of PV modules.</p>
+
+<h3 id="pv-hawk">PV Hawk</h3>
+
+<p><em>GitHub</em>: <a href="https://github.com/LukasBommes/PV-Hawk">https://github.com/LukasBommes/PV-Hawk</a></p>
+
+<p><em>Description</em>: PV Hawk implements the computer vision pipeline described above. It contains all functionality for extraction and mapping of PV modules from aerial IR videos. Target audiences are researchers and companies that want to offer inspection of large-scale PV plants.</p>
+
+<p><em>Technologies</em>: PV Hawk is a command line tool written in pure Python, extensively relying on OpenCV for image processing. Structure from motion is performed with the OpenSfM library, and the g2o framework is used for graph optimization. The entire pipeline is deployed via Docker to ensure fast and easy setup on other machines.</p>
+
+<h3 id="pv-hawk-viewer">PV Hawk Viewer</h3>
+
+<p><em>GitHub</em>: <a href="https://github.com/LukasBommes/PV-Hawk-Viewer">https://github.com/LukasBommes/PV-Hawk-Viewer</a></p>
+
+<p><em>Description</em>: A desktop app (see fig. 8) for viewing reconstructions of large-scale photovoltaic (PV) plants created with PV Hawk. The user can browse individual PV modules on a map. Corresponding infrared video frames and extracted module patches will be shown. The software provides functionality for annotating module anomalies and electrical connectivity of modules. Different kinds of analyses can be performed based on the map and infrared frames. Results can be overlaid on the map. For example, trend-corrected maximum or mean module temperatures can be computed facilitating the identification of many types of module anomalies (see <a href="/publications#publication-3">publication [3]</a> for details). Furthermore, a deep learning-based anomaly prediction can be performed (see <a href="/publications#publication-2">publication [2]</a> for details).</p>
+
+<p><img src="/assets/projects/images/pv_drone_inspect_viewer.png" alt="pv_drone_inspect_viewer" />
+<em>Fig. 8: PV Hawk Viewer for viewing and analyzing reconstructions of large-scale PV plants obtained with PV Hawk.</em></p>
+
+<p><em>Technologies</em>: I used the Qt for Python desktop framework to implement the graphical user interface (GUI) in Python. Here, I utilized the model-view-controller pattern to separate data models, application logic and GUI functionality. The map component is based on the Leaflet.js library, written in Javascript and embedded with a QT web engine view. Deep learning models are implemented with PyTorch and PyTorch Lightning. Python distutils are used for packaging and distribution of the application via the Python package index (PyPI).</p>
+
+<p><em>Note</em>: I built an initial version of this app as web app based on React and Python Flask. The backend functionality (PV Hawk) was placed behind a REST API (realized with FastAPI) and computational workloads were scheduled with Celery. A PostgresSQL database was used. The entire system was distributed over multiple Docker containers that were orchestrated with Docker Compose. However, I decided to switch to a Desktop-app due to the easier to implement and more consistent GUI provided by a Desktop environment.</p>
+
+<h3 id="grid-annotation-tool">Grid Annotation Tool</h3>
+
+<p><em>GitHub</em>: <a href="https://github.com/LukasBommes/ Grid-Annotation-Tool">https://github.com/LukasBommes/ Grid-Annotation-Tool</a></p>
+
+<p><em>Description</em>: A web app for annotating image datasets for instance segmentation (see fig. 9). Opposed to existing labelling tools, such as Labelbox or CVAT, grid-like structures can be annotated faster and more accurately by annotating the grid spines instead of individual polygons. I built this tool specifically for annotating PV modules in infrared images. The created dataset was used to train and evaluate the Mask R-CNN instance segmentation model in PV Hawk (see <a href="/publications#publication-1">publication [1]</a> for details).</p>
+
+<p><img src="/assets/projects/images/grid_annotation_tool.png" alt="grid_annotation_tool" />
+<em>Fig. 9: Grid Annotation Tool helps annotate datasets for the instance segmentation of photovoltaics modules.</em></p>
+
+<p><em>Technologies</em>: The backend of this app is based on Python Flask. The frontend is written in Javascript and relies on the D3.js library for drawing.</p>
+
+<h2 id="related-publications">Related Publications</h2>
+
+<p>The following three journal articles were published during this project: [<a href="/publications#publication-1">1</a>, <a href="/publications#publication-2">2</a>, <a href="/publications#publication-3">3</a>].</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<ul>
+  <li><a href="/assets/documents/phd_thesis.pdf">PhD thesis (PDF)</a></li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>REN21, “Renewables 2020 global status report,” 2020. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>IRENA, “Future of solar photovoltaic: Deployment, investment, technology, grid integration and socio-economic aspects,” International Renewable Energy Agency, Abu Dhabi, 2019. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>

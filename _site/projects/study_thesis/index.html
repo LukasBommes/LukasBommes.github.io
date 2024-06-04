@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Predictive Maintenance of CNC Machines (Study Thesis) | Lukas Bommes</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Predictive Maintenance of CNC Machines (Study Thesis)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Source for my homepage" />
+<meta property="og:description" content="Source for my homepage" />
+<link rel="canonical" href="https://lukasbommes.github.io/projects/study_thesis/" />
+<meta property="og:url" content="https://lukasbommes.github.io/projects/study_thesis/" />
+<meta property="og:site_name" content="Lukas Bommes" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Predictive Maintenance of CNC Machines (Study Thesis)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Source for my homepage","headline":"Predictive Maintenance of CNC Machines (Study Thesis)","url":"https://lukasbommes.github.io/projects/study_thesis/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://lukasbommes.github.io/feed.xml" title="Lukas Bommes" /></head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lukas Bommes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/publications/">Publications</a><a class="page-link" href="/documents/">Documents</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Predictive Maintenance of CNC Machines (Study Thesis)</h1>
+  </header>
+
+  <div class="post-content">
+    <p><em>Conducted during</em>: Study thesis at IWF TU Braunschweig and A*Star SIMTech Singapore / Student research assistant at IWF TU Braunschweig</p>
+
+<p><em>Topic</em>: Application of machine learning algorithms for the detection of anomalous components in a CNC milling machine</p>
+
+<p><strong>Motivation</strong>: Early detection of wear and failures in complex CNC machines is important to prevent costly standstills of production lines and further damage to the machine and other equipment.</p>
+
+<p><strong>Aim</strong>: Develop a method for anomaly detection in CNC machine tools. For easy deployment and compatibility with many machine tool manufacturers, the method must not rely on communication with the internal machine controller. Instead, the method must be based solely on the measurement of the total current consumption of the machine.</p>
+
+<p><strong>Method</strong>: To detect anomalous machine components, a machine program is run that activates machine axes sequentially and in a controlled way. The program is run once on the healthy machine to generate reference data and then executed in regular intervals for automatic inspection of the machine. During execution of the program the total current consumption is measured at a rate of 50 Hz and automatically cut into segments of individual axis’ movements by means of template matching (see fig. 1). Signal processing techniques and machine learning classifiers determine, whether additional (not directly controllable) aggregates, such as coolant pumps, are activated. For the creation of datasets for the machine learning algorithms a MATLAB-based annotation tool was built (see fig. 2). Hand-crafted features are extracted from clean segments (segments with all additional aggregates deactivated) and clustered. Anomalies are detected by distance thresholding between corresponding clusters of the reference dataset of the healthy machine and the current measurement (see fig. 3). Moreover, random faults are detected by an outlier search based on the local outlier factor. Experiments showed that this approach is sensitive enough to detect minor changes on the milling machine, such as removal of the tool from the main spindle.</p>
+
+<p><img src="/assets/projects/images/automatic_cuts_evaluation_z_axis-1.png" alt="automatic_cuts_evaluation_z_axis" />
+<em>Fig. 1: Section of the measured total current consumption of the machine tool with automatically detected segments (red lines).</em></p>
+
+<p><img src="/assets/projects/images/label_assistant_window.PNG" alt="label_assistant_window" />
+<em>Fig. 2: Graphical user interface for manual data annotation built with MATLAB.</em></p>
+
+<p><img src="/assets/projects/images/scatterplot_result_experiment_2-1.png" alt="scatterplot" />
+<em>Fig. 3: Clustered segments of the healthy reference machine (training) and the same machine with anomalies (testing) in classes 6 and 7, corresponding to the forward/backward movement of the z-axis.</em></p>
+
+<p><strong>Note</strong>: We tested this method on a CNC mill at IWF TU Braunschweig and a much larger CNC lathe at Siemens Energy in Duisburg.</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<ul>
+  <li><a href="/assets/documents/study_thesis.pdf">Study thesis (PDF)</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>

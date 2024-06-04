@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Multi-camera Tracking System for Shopfloor Monitoring (Master’s Thesis) | Lukas Bommes</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Multi-camera Tracking System for Shopfloor Monitoring (Master’s Thesis)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Source for my homepage" />
+<meta property="og:description" content="Source for my homepage" />
+<link rel="canonical" href="https://lukasbommes.github.io/projects/master_thesis/" />
+<meta property="og:url" content="https://lukasbommes.github.io/projects/master_thesis/" />
+<meta property="og:site_name" content="Lukas Bommes" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Multi-camera Tracking System for Shopfloor Monitoring (Master’s Thesis)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Source for my homepage","headline":"Multi-camera Tracking System for Shopfloor Monitoring (Master’s Thesis)","url":"https://lukasbommes.github.io/projects/master_thesis/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://lukasbommes.github.io/feed.xml" title="Lukas Bommes" /></head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lukas Bommes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/publications/">Publications</a><a class="page-link" href="/documents/">Documents</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Multi-camera Tracking System for Shopfloor Monitoring (Master’s Thesis)</h1>
+  </header>
+
+  <div class="post-content">
+    <p><em>Conducted during</em>: Master thesis at IWF TU Braunschweig and A*Star SIMTech Singapore / Software Engineer at A*Star SIMTech</p>
+
+<p><em>Topic</em>: Development of a multi-camera-based detection and tracking system for shopfloor monitoring</p>
+
+<p><strong>Motivation</strong>: Despite a high degree of automation many manufacturing processes incorporate human workers because of their superior flexibility and ability to conduct complex tasks. Monitoring of human workers is an important cornerstone for more informative digital factory models, which do not only include machine- and operations-related data, but also the state of the human work force. This can reduce human errors and improve product quality as well as work safety.</p>
+
+<p><strong>Aim</strong>: Develop a software system which tracks human workers (and other objects) with multiple surveillance cameras in a factory environment.</p>
+
+<p><strong>Method</strong>: Video streams of multiple network surveillance cameras are captured and synchronized. People and objects are detected with a Faster R-CNN model in regular intervals and tracked in intermediate frames using the fast <a href="#mvmed-tracker">MVmed multi-object tracker</a>. Locations of people within different cameras are fused and mapped to the factory floor by means of homography transformations, which are determined a priori via camera calibration. Tracked people and objects are visualized in real-time in a web app containing a virtual 2D floorplan (see fig. 1). Furthermore, trajectories are persisted, enabling different types of analyses, e.g., to reduce walking distances in a manufacturing process.</p>
+
+<p><img src="/assets/projects/images/shopfloor_monitor.png" alt="shopfloor_monitor_overview" />
+<em>Fig. 1: Components of the Shopfloor Monitor: two out of seven video streams with tracked people (left) and the web app with virtual 2D floorplan (right).</em></p>
+
+<p><strong>Practical Relevance</strong>: The Shopfloor Monitor is deployed in the Model Factory at SIMTech and in active development. During my time at SIMTech the project received interest from an international hotel chain for smart control of HVAC and lighting systems. Several interns have contributed to the project. One of them extended the Shopfloor Monitor to ensure workers wear mandatory safety gear. Currently, the Shopfloor Monitor is modified to monitor social distancing during the Covid-19 pandemic in Singapore. Apart from this, the Shopfloor Monitor also received negative feedback for being potentially intrusive to workers’ privacy.</p>
+
+<h2 id="software">Software</h2>
+
+<h3 id="shopfloor-monitor-unpublished">Shopfloor Monitor (unpublished)</h3>
+
+<p><em>Description</em>: The Shopfloor Monitor is a proprietary software in active development at A*Star SIMTech.</p>
+
+<p><em>Technologies</em>: The Shopfloor Monitor comprises of a command line tool written in Python, which contains the application logic, and a web app based on Python Flask for visualization of tracked people in real-time on a virtual 2D floorplan. The floorplan is based on SVG, D3.js, and three.js. Apache ECharts are used for real-time display of statistics. Communication between backend and frontend is realized with sockets. The web app is served with NGINX and a MongoDB is used for data storage. Deep learning components are implemented in Tensorflow 1. Docker and Docker Compose are used for the deployment of the system, which is implemented in a microservice pattern. Several extension modules have been developed: The <a href="#rtsp-video-stream-synchronizer">RTSP Video Stream Synchronizer</a> for synchronization of the network camera streams, and the <a href="#mvmed-tracker">MVmed tracker</a> for fast multi-object tracking based on motion vector fields contained in the encoded video streams. These motion vector fields are extracted with the <a href="#motion-vector-extractor">Motion Vector Extractor</a>.</p>
+
+<h3 id="rtsp-video-stream-synchronizer">RTSP Video Stream Synchronizer</h3>
+
+<p><em>GitHub</em>: <a href="https://github.com/LukasBommes/rtsp-streamsync">https://github.com/LukasBommes/rtsp-streamsync</a></p>
+
+<p><em>Description</em>: The Shopfloor Monitor relies on the video input of multiple network video cameras, which, by default, are not synchronized and exhibit stream offsets of tens of seconds. To solve this issue, I developed the RTSP Video Stream Synchronizer, which is a C++/Python library for the synchronization of video frames from multiple network network cameras. In tests, the algorithm synchronized seven parallel video streams with an initial offset of 28.7 seconds to an accuracy of 50.5 milliseconds in real-time.</p>
+
+<h3 id="motion-vector-extractor">Motion Vector Extractor</h3>
+
+<p><em>GitHub</em>: <a href="https://github.com/LukasBommes/mv-extractor">https://github.com/LukasBommes/mv-extractor</a></p>
+
+<p><em>Description</em>: A tool for the extraction of motion vector fields (see fig. 2) from H.264 and MPEG-4 Part 2 encoded video streams (see <a href="/publications#publication-4">publication [4]</a> for details). Extracted motion vectors can be used for downstream tasks, such as object detection, object tracking, structure from motion, or video stabilization. Since motion vectors are readily available in the video stream, no additional computation is needed to estimate scene motion. This is a great advantage over techniques operating on the decoded frames, such as optical flow.</p>
+
+<p><img src="/assets/projects/images/mv_extractor.png" alt="mv_extractor" />
+<em>Fig. 2: Exemplary video frame with motion vectors extracted by the motion vector extractor.</em></p>
+
+<p><em>Technologies</em>: The tool exposes a single class acting as a drop-in replacement for OpenCV’s VideoCapture class. In addition to the decoded frame, motion vectors and the type of each frame (I/P/B frame) are returned. FFMPEG is used for handling of the video stream, decoding of frames and unpacking of motion vectors. The Python and Numpy C APIs are utilized to provide a Python wrapper around the C++ API.</p>
+
+<h3 id="mvmed-tracker">MVmed Tracker</h3>
+
+<p><em>GitHub</em>: <a href="https://github.com/LukasBommes/mvmed-tracker">https://github.com/LukasBommes/mvmed-tracker</a></p>
+
+<p><em>Description</em>: MVmed tracker is a real-time online multi-object tracker for videos, which exploits motion vector fields readily available in MPEG-4 or H.264 encoded video streams to achieve very high tracking speeds (see <a href="/publications#publication-4">publication [4]</a> for details). The tracker uses a Faster R-CNN to detect object bounding boxes in regular intervals, which are propagated by averaging of the motion vector field inside the box (see fig. 3). On the MOT17 benchmark MVmed achieves a MOTA of 45.3 % at 42.1 Hz (266.9 Hz without detection), which is as accurate but much faster than the previous state of the art tracker for encoded videos.</p>
+
+<p><img src="/assets/projects/images/mvmed_tracker.png" alt="mvmed_tracker" />
+<em>Fig. 3: Exemplary output of the MVmed tracker. Red arrows indicate the motion vector field. Detected and tracked bounding boxes are shown in blue and orange, respectively.</em></p>
+
+<p><em>Technologies</em>: The tracking algorithm is implemented in pure Python and the motion vector field is extracted with the <a href="#motion-vector-extractor">Motion Vector Extractor</a>. I used the Faster R-CNN model provided in the Tensorflow object detection API.</p>
+
+<p><em>Note</em>: I also experimented about two months with a convolutional neural network for motion prediction from the motion vector field but could not achieve the performance of the simple median averaging performed in MVmed.</p>
+
+<h2 id="related-publications">Related Publications</h2>
+
+<p>The following conference paper was published during this project: <a href="/publications#publication-4">[4]</a></p>
+
+<h2 id="downloads">Downloads</h2>
+
+<ul>
+  <li><a href="/assets/documents/master_thesis.pdf">Master thesis (PDF)</a></li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>
